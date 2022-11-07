@@ -25,6 +25,7 @@ dependencies:
   flutter_native_splash: ^2.2.14
   get_storage: ^2.0.3
   # share_plus: ^6.2.0
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:

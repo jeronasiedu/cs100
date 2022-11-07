@@ -7,9 +7,41 @@ class DomainsPage extends StatelessWidget {
   final DomainsController controller = Get.put(DomainsController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(controller.name),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(controller.name),
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: [
+              Tab(
+                child: Chip(
+                  label: const Text("Youtube"),
+                  avatar: Image.asset('assets/youtube.png'),
+                ),
+              ),
+              Tab(
+                child: Chip(
+                  label: const Text("Website"),
+                  avatar: Image.asset('assets/website.png'),
+                ),
+              ),
+              Tab(
+                child: Chip(
+                  label: const Text("Book"),
+                  avatar: Image.asset('assets/book.png'),
+                ),
+              ),
+              Tab(
+                child: Chip(
+                  label: const Text("Quiz"),
+                  avatar: Image.asset('assets/quiz.png'),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

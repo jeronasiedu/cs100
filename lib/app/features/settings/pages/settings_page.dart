@@ -59,9 +59,10 @@ class SettingsPage extends StatelessWidget {
         SliverList(
           delegate: SliverChildListDelegate(
             [
-              const ListTile(
-                title: Text("Profile"),
-                trailing: Icon(Ionicons.chevron_forward),
+              ListTile(
+                onTap: () {},
+                title: const Text("Profile"),
+                trailing: const Icon(Ionicons.person_outline),
               ),
               GetBuilder<SettingsController>(
                 init: SettingsController(),
@@ -87,17 +88,20 @@ class SettingsPage extends StatelessWidget {
                   );
                 },
               ),
-              const ListTile(
-                title: Text("Share App"),
-                trailing: Icon(Icons.share),
+              ListTile(
+                onTap: () {},
+                title: const Text("Share App"),
+                trailing: const Icon(Icons.share),
               ),
-              const ListTile(
-                title: Text("Support Us"),
-                trailing: Icon(Ionicons.heart_outline),
+              ListTile(
+                onTap: () {},
+                title: const Text("Support Us"),
+                trailing: const Icon(Ionicons.heart_outline),
               ),
-              const ListTile(
-                title: Text("Logout"),
-                trailing: Icon(Icons.logout),
+              ListTile(
+                onTap: () {},
+                title: const Text("Logout"),
+                trailing: const Icon(Icons.logout),
               ),
             ],
           ),
