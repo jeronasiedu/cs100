@@ -4,17 +4,17 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = FlexThemeData.light(
-  scheme: FlexScheme.flutterDash,
+  scheme: FlexScheme.gold,
   useMaterial3: true,
-  textTheme: GoogleFonts.mulishTextTheme(
+  textTheme: GoogleFonts.poppinsTextTheme(
     Get.textTheme,
   ),
 );
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.flutterDash,
+  scheme: FlexScheme.gold,
   useMaterial3: true,
-  textTheme: GoogleFonts.mulishTextTheme(
+  textTheme: GoogleFonts.poppinsTextTheme(
     ThemeData.dark().textTheme,
   ),
 );

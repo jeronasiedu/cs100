@@ -11,6 +11,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CS100'),
+        centerTitle: true,
       ),
       body: Obx(() => controller.activePage),
       bottomNavigationBar: Obx(

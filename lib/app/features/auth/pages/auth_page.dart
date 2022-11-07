@@ -11,80 +11,48 @@ class AuthPage extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(14),
-          physics: const BouncingScrollPhysics(),
-          children: [
-            Image.asset(
-              'assets/programming.png',
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  'assets/programming.png',
+                ),
+                Text(
+                  "Welcome to CS100",
+                  textAlign: TextAlign.center,
+                  style: Get.textTheme.headline6,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 450,
+                    ),
+                    child: Text(
+                      "Ready to commit to your computer science studies? Don't waste any more time looking for the best resources. There's only one place you need to go, CS100!",
+                      style: Get.textTheme.bodyText2,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 18,
+                  ),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      Get.offAllNamed(AppRoutes.home);
+                    },
+                    icon: const Icon(Ionicons.logo_google),
+                    label: const Text("Continue with Google"),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              "Welcome to CS100",
-              textAlign: TextAlign.center,
-              style: Get.textTheme.headline6,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text(
-                "Ready to commit to your computer science studies? Don't waste any more time looking for the best resources. There's only one place you need to go, CS100!",
-                style: Get.textTheme.bodyText2,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                "Select Your Year",
-                style: Get.textTheme.bodyLarge,
-              ),
-            ),
-            GetBuilder<AuthController>(
-              builder: (controller) => RadioListTile(
-                title: const Text("First Year"),
-                value: StudentYear.one,
-                groupValue: controller.selectedYear,
-                onChanged: (value) {
-                  controller.changeYear(value!);
-                },
-              ),
-            ),
-            GetBuilder<AuthController>(
-              builder: (controller) => RadioListTile(
-                title: const Text("Second Year"),
-                value: StudentYear.two,
-                groupValue: controller.selectedYear,
-                onChanged: (value) {
-                  controller.changeYear(value!);
-                },
-              ),
-            ),
-            GetBuilder<AuthController>(
-              builder: (controller) => RadioListTile(
-                title: const Text("Third Year"),
-                value: StudentYear.three,
-                groupValue: controller.selectedYear,
-                onChanged: (value) {
-                  controller.changeYear(value!);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 18, bottom: 10),
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  Get.offAllNamed(AppRoutes.home);
-                },
-                icon: const Icon(Ionicons.logo_google),
-                label: const Text("Continue with Google"),
-              ),
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Get.offAllNamed(AppRoutes.home);
-              },
-              icon: const Icon(Ionicons.logo_github),
-              label: const Text("Continue with Github"),
-            ),
-          ],
+          ),
         ),
       ),
     );
