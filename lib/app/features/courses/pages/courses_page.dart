@@ -8,7 +8,7 @@ class CoursesPage extends StatelessWidget {
   final CoursesController controller = Get.put(CoursesController());
   @override
   Widget build(BuildContext context) {
-    final int crossAxisCount = Get.width ~/ 180;
+    final int crossAxisCount = context.width ~/ 180;
     return Obx(
       () => controller.courses.value.fold(
         (l) => Center(

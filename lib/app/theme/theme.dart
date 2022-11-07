@@ -9,6 +9,23 @@ final lightTheme = FlexThemeData.light(
   textTheme: GoogleFonts.poppinsTextTheme(
     Get.textTheme,
   ),
+).copyWith(
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
+    ),
+  ),
 );
 
 final darkTheme = FlexThemeData.dark(
@@ -16,5 +33,22 @@ final darkTheme = FlexThemeData.dark(
   useMaterial3: true,
   textTheme: GoogleFonts.poppinsTextTheme(
     ThemeData.dark().textTheme,
+  ),
+).copyWith(
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
+    ),
   ),
 );

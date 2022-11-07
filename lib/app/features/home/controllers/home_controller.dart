@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  List<Widget> pages = [CoursesPage(), const SettingsPage()];
+  List<Widget> pages = [CoursesPage(), SettingsPage()];
   RxInt activePageIndex = 0.obs;
   Widget get activePage => pages[activePageIndex.value];
   void changePageIndex(int index) {

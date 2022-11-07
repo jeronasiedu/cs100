@@ -5,13 +5,17 @@ import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await GetStorage.init();
+  await GetStorage.init('theme');
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
@@ -25,6 +29,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    GetStorage themeStore = GetStorage('theme');
+    final isDarkMode = themeStore.read('themeMode') ?? Get.isDarkMode;
     return GetMaterialApp(
       useInheritedMediaQuery: true,
       builder: DevicePreview.appBuilder,
@@ -34,7 +44,7 @@ class MyApp extends StatelessWidget {
       title: 'CS 100',
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       getPages: AppPages.pages,
       initialRoute: AppRoutes.auth,
       initialBinding: AuthBinding(),

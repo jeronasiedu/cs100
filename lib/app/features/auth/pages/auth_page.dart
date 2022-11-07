@@ -40,7 +40,7 @@ class AuthPage extends GetView<AuthController> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: 18,
+                    top: 25,
                   ),
                   child: ElevatedButton.icon(
                     onPressed: () {
