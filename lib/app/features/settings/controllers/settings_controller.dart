@@ -1,3 +1,4 @@
+import 'package:cs_100/app/routes/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,7 @@ class SettingsController extends GetxController {
     try {
       await GoogleSignIn().disconnect();
       await auth.signOut();
+      Get.offAllNamed(AppRoutes.auth);
     } on PlatformException {
       Get.snackbar(
         'Error',
