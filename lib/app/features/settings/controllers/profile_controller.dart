@@ -1,19 +1,51 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ProfileController extends GetxController {
+  late GetStorage userDetailsBox;
   StudentYear selectedYear = StudentYear.one;
   Semester selectedSemester = Semester.one;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String? get userName => auth.currentUser?.displayName;
+  String? get userEmail => auth.currentUser?.email;
+  bool hasChangedDetails = false;
   void changeYear(StudentYear studentYear) {
     selectedYear = studentYear;
+    hasChangedDetails = true;
     update();
   }
 
   void changeSemester(Semester semester) {
     selectedSemester = semester;
+    hasChangedDetails = true;
     update();
   }
-  // google sign in
 
+  void updateDetails() {
+    userDetailsBox.write(
+      'userDetails',
+      {
+        'year': selectedYear.index,
+        'semester': selectedSemester.index,
+      },
+    );
+    hasChangedDetails = false;
+    update();
+  }
+
+  @override
+  void onInit() {
+    userDetailsBox = GetStorage(auth.currentUser!.uid);
+    // get the user details from the box
+    final details = userDetailsBox.read('userDetails');
+    if (details != null) {
+      selectedYear = StudentYear.values[details['year']];
+      selectedSemester = Semester.values[details['semester']];
+    }
+
+    super.onInit();
+  }
 }
 
 enum StudentYear { one, two, three, four }

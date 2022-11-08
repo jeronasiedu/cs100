@@ -1,32 +1,53 @@
-import 'package:cs_100/app/features/settings/controllers/profile_controller.dart';
+import 'package:cs_100/app/features/auth/controllers/user_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({Key? key}) : super(key: key);
-  final ProfileController controller = Get.put(ProfileController());
+class UserDetailsPage extends GetView<UserDetailsController> {
+  const UserDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.userName!),
+        title: const Text("Almost there!"),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: ListView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(14),
           children: [
-            const Text("Email"),
-            Text(
-              controller.userEmail!,
-              style: Get.textTheme.bodyLarge,
+            Row(
+              children: [
+                Text(
+                  "Hi ",
+                  style: Get.textTheme.bodyText1,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "${controller.userName}",
+                  style: Get.textTheme.bodyText1!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "!",
+                  style: Get.textTheme.bodyText1,
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            const Divider(),
+            const Text(
+              "Letting us know more about you helps us personalize your experience.",
+            ),
             const SizedBox(height: 10),
-            const Text("Student Year"),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
+            const Text(
+              "Kindly select your level",
+            ),
+            GetBuilder<UserDetailsController>(
+              init: UserDetailsController(),
               initState: (_) {},
               builder: (_) {
                 return RadioListTile(
@@ -39,8 +60,8 @@ class ProfilePage extends StatelessWidget {
                 );
               },
             ),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
+            GetBuilder<UserDetailsController>(
+              init: UserDetailsController(),
               initState: (_) {},
               builder: (_) {
                 return RadioListTile(
@@ -53,8 +74,8 @@ class ProfilePage extends StatelessWidget {
                 );
               },
             ),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
+            GetBuilder<UserDetailsController>(
+              init: UserDetailsController(),
               initState: (_) {},
               builder: (_) {
                 return RadioListTile(
@@ -71,8 +92,8 @@ class ProfilePage extends StatelessWidget {
               height: 10,
             ),
             const Text("Semester"),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
+            GetBuilder<UserDetailsController>(
+              init: UserDetailsController(),
               initState: (_) {},
               builder: (_) {
                 return RadioListTile(
@@ -85,8 +106,8 @@ class ProfilePage extends StatelessWidget {
                 );
               },
             ),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
+            GetBuilder<UserDetailsController>(
+              init: UserDetailsController(),
               initState: (_) {},
               builder: (_) {
                 return RadioListTile(
@@ -100,21 +121,23 @@ class ProfilePage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 25),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
-              initState: (_) {},
-              builder: (_) {
-                return ElevatedButton.icon(
-                  onPressed: controller.hasChangedDetails
-                      ? () {
-                          controller.updateDetails();
-                        }
-                      : null,
-                  icon: const Icon(Ionicons.checkmark),
-                  label: const Text("Update"),
-                );
+            ElevatedButton.icon(
+              onPressed: () {
+                controller.saveDetails();
               },
-            )
+              icon: const Icon(Ionicons.checkmark),
+              label: const Text("All Set!"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              "You can change these later in settings",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+              ),
+            ),
           ],
         ),
       ),
