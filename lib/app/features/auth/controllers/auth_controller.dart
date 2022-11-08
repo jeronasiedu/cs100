@@ -35,8 +35,6 @@ class AuthController extends GetxController {
           AppRoutes.home,
         );
       }
-    } else {
-      Get.offAllNamed(AppRoutes.auth);
     }
   }
 
