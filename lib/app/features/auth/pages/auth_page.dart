@@ -1,4 +1,4 @@
-import 'package:cs_100/app/routes/pages.dart';
+import 'package:cs_100/shared/spinner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -42,12 +42,20 @@ class AuthPage extends GetView<AuthController> {
                   padding: const EdgeInsets.only(
                     top: 25,
                   ),
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      Get.offAllNamed(AppRoutes.home);
-                    },
-                    icon: const Icon(Ionicons.logo_google),
-                    label: const Text("Continue with Google"),
+                  child: Obx(
+                    () => ElevatedButton.icon(
+                      onPressed: controller.isLoading.value
+                          ? null
+                          : () {
+                              controller.signInWithGoogle();
+                            },
+                      icon: controller.isLoading.value
+                          ? const Spinner()
+                          : const Icon(
+                              Ionicons.logo_google,
+                            ),
+                      label: const Text("Continue with Google"),
+                    ),
                   ),
                 ),
               ],

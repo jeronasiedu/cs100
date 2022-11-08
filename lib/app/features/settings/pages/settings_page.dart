@@ -1,5 +1,7 @@
 import 'package:cs_100/app/features/settings/controllers/settings_controller.dart';
 import 'package:cs_100/app/features/settings/pages/profile_page.dart';
+import 'package:cs_100/shared/spinner.dart';
+import 'package:cs_100/shared/utils/custom_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,14 +18,14 @@ class SettingsPage extends StatelessWidget {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 vertical: 20,
               ),
               child: Center(
-                child: CircleAvatar(
+                child: CustomAvatar(
+                  imageUrl: controller.userPhoto!,
                   radius: 70,
-                  backgroundImage: AssetImage('assets/user.jpg'),
                 ),
               ),
             ),
@@ -71,10 +73,18 @@ class SettingsPage extends StatelessWidget {
               trailing: const Icon(Ionicons.heart_outline),
             ),
             const Divider(height: 0),
-            ListTile(
-              onTap: () {},
-              title: const Text("Logout"),
-              trailing: const Icon(Icons.logout),
+            Obx(
+              () => ListTile(
+                onTap: () {
+                  controller.logout();
+                },
+                title: const Text("Logout"),
+                trailing: controller.isLoggingOut.value
+                    ? Spinner(
+                        color: Get.theme.colorScheme.error,
+                      )
+                    : const Icon(Icons.logout),
+              ),
             ),
             const Divider(height: 0),
           ],

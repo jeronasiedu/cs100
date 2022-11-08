@@ -24,6 +24,7 @@ dependencies:
   device_preview: ^1.1.0
   flutter_native_splash: ^2.2.14
   get_storage: ^2.0.3
+  google_sign_in: ^5.4.2
   # share_plus: ^6.2.0
   cached_network_image: ^3.2.2
 
@@ -46,3 +47,16 @@ flutter_icons:
   image_path: "assets/logo.png"
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/logo.png"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/logo.png"
+  color_dark: "#1e222b"
+  android: true
+  ios: true
+  android_12:
+    adaptive_icon_background: "#FFFFFF"
+    adaptive_icon_foreground: "assets/logo.png"
+    color: "#1e222b"
+    color_dark: "#1e222b"
+    image: "assets/logo.png"
