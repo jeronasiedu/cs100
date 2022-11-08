@@ -24,10 +24,13 @@ class AuthController extends GetxController {
     super.onReady();
   }
 
-  void handleAuthStateChanged(isLoggedIn) {
+  void handleAuthStateChanged(isLoggedIn) async {
     if (isLoggedIn) {
+      await GetStorage.init(_auth.currentUser!.uid);
       userDetailsBox = GetStorage(_auth.currentUser!.uid);
       final details = userDetailsBox.read('userDetails');
+      print(_auth.currentUser!.uid);
+      print(details);
       if (details == null) {
         Get.offAllNamed(AppRoutes.userDetails);
       } else {
