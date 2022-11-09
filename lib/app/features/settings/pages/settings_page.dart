@@ -69,7 +69,7 @@ class SettingsPage extends StatelessWidget {
             const Divider(height: 0),
             ListTile(
               onTap: () {},
-              title: const Text("Support Us"),
+              title: const Text("Support Me"),
               trailing: const Icon(Ionicons.heart_outline),
             ),
             const Divider(height: 0),
