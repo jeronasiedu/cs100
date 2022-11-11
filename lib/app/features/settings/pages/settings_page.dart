@@ -33,7 +33,7 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Get.to(() => ProfilePage());
               },
-              title: const Text("Profile"),
+              title: const Text("Account"),
               trailing: const Icon(Ionicons.person_outline),
             ),
             const Divider(height: 0),
@@ -68,10 +68,8 @@ class SettingsPage extends StatelessWidget {
             ),
             const Divider(height: 0),
             ListTile(
-              onTap: () {
-                controller.supportMe();
-              },
-              title: const Text("Support Me"),
+              onTap: () {},
+              title: const Text("Rate App"),
               trailing: const Icon(Ionicons.heart_outline),
             ),
             const Divider(height: 0),
