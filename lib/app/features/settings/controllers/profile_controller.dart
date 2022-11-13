@@ -1,3 +1,4 @@
+import 'package:cs_100/shared/enums.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -31,6 +32,13 @@ class ProfileController extends GetxController {
       },
     );
     hasChangedDetails = false;
+    Get.snackbar(
+      "Update",
+      "Your account info has been updated, navigate to course to see the new changes",
+      backgroundColor: Get.theme.secondaryHeaderColor,
+      snackPosition: SnackPosition.BOTTOM,
+      colorText: Get.theme.colorScheme.onTertiary,
+    );
     update();
   }
 
@@ -47,7 +55,3 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 }
-
-enum StudentYear { one, two, three, four }
-
-enum Semester { one, two }

@@ -1,3 +1,4 @@
+import 'package:cs_100/shared/enums.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -35,7 +36,3 @@ class UserDetailsController extends GetxController {
     Get.offAllNamed('/home');
   }
 }
-
-enum StudentYear { one, two, three, four }
-
-enum Semester { one, two }

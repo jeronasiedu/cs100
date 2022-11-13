@@ -1,4 +1,5 @@
 import 'package:cs_100/app/features/settings/controllers/profile_controller.dart';
+import 'package:cs_100/shared/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
@@ -24,7 +25,37 @@ class ProfilePage extends StatelessWidget {
             ),
             const Divider(),
             const SizedBox(height: 10),
-            const Text("Student Year"),
+            const Text("School"),
+            RadioListTile(
+              title: const Text("KNUST"),
+              value: true,
+              groupValue: true,
+              onChanged: (value) {},
+              // make this selected by default
+            ),
+            const RadioListTile(
+              title: Text("LEGON"),
+              value: false,
+              subtitle: Text("Coming soon"),
+              groupValue: null,
+              onChanged: null,
+            ),
+            const RadioListTile(
+              title: Text("UCC"),
+              value: false,
+              subtitle: Text("Coming soon"),
+              groupValue: null,
+              onChanged: null,
+            ),
+            const RadioListTile(
+              title: Text("KTU"),
+              value: true,
+              subtitle: Text("Coming soon"),
+              groupValue: null,
+              onChanged: null,
+            ),
+            const SizedBox(height: 10),
+            const Text("Level"),
             GetBuilder<ProfileController>(
               init: ProfileController(),
               initState: (_) {},

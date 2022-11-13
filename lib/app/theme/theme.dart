@@ -4,7 +4,7 @@ import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = FlexThemeData.light(
-  scheme: FlexScheme.indigo,
+  scheme: FlexScheme.bigStone,
   useMaterial3: true,
   textTheme: GoogleFonts.poppinsTextTheme(
     Get.textTheme,
@@ -29,7 +29,7 @@ final lightTheme = FlexThemeData.light(
 );
 
 final darkTheme = FlexThemeData.dark(
-  scheme: FlexScheme.indigo,
+  scheme: FlexScheme.mango,
   useMaterial3: true,
   textTheme: GoogleFonts.poppinsTextTheme(
     ThemeData.dark().textTheme,
