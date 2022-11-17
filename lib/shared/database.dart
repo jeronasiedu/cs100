@@ -5,4 +5,5 @@ abstract class Database {
   static final usersCollection = _db.collection('users');
   static final coursesCollection = _db.collection('courses');
   static final domainsCollection = _db.collection('domains');
+  static final resourcesCollection = _db.collection('resources');
 }
