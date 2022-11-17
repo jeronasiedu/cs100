@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsController extends GetxController {
@@ -77,5 +78,11 @@ class SettingsController extends GetxController {
     if (!await launchUrl(encodedUri, mode: LaunchMode.externalApplication)) {
       Get.snackbar("Error", "Whatsapp is not installed");
     }
+  }
+
+  void shareApp() {
+    Share.share(
+      "Hey, checkout CS100! A must have app for all computer science students ",
+    );
   }
 }

@@ -91,6 +91,11 @@ class CoursesPage extends StatelessWidget {
                               ),
                               Chip(
                                 label: Text('$totalResources Resources'),
+                                backgroundColor: Get.theme.colorScheme.primary
+                                    .withOpacity(0.8),
+                                labelStyle: Get.textTheme.bodyText2!.copyWith(
+                                  color: Get.theme.colorScheme.onPrimary,
+                                ),
                               )
                             ],
                           ),

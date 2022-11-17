@@ -62,7 +62,9 @@ class SettingsPage extends StatelessWidget {
             ),
             const Divider(height: 0),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                controller.shareApp();
+              },
               title: const Text("Share App"),
               trailing: const Icon(Icons.share),
             ),
