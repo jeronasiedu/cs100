@@ -1,43 +1,17 @@
 import 'package:cs_100/app/routes/pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   late GetStorage userDetailsBox;
+  final userStore = GetStorage('userStore');
   RxBool isLoading = false.obs;
   var isSignIn = false.obs;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
-
-  @override
-  void onReady() {
-    ever(isSignIn, handleAuthStateChanged);
-    isSignIn.value = _auth.currentUser != null;
-    _auth.authStateChanges().listen((event) {
-      isSignIn.value = event != null;
-    });
-    FlutterNativeSplash.remove();
-    super.onReady();
-  }
-
-  void handleAuthStateChanged(isLoggedIn) async {
-    if (isLoggedIn) {
-      await GetStorage.init(_auth.currentUser!.uid);
-      userDetailsBox = GetStorage(_auth.currentUser!.uid);
-      final details = userDetailsBox.read('userDetails');
-      if (details == null) {
-        Get.offAllNamed(AppRoutes.userDetails);
-      } else {
-        Get.offAllNamed(
-          AppRoutes.home,
-        );
-      }
-    }
-  }
 
   Future<void> signInWithGoogle() async {
     try {
@@ -50,7 +24,18 @@ class AuthController extends GetxController {
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
         );
-        await _auth.signInWithCredential(credential);
+        await _auth.signInWithCredential(credential).then((value) {
+          userStore.write('id', _auth.currentUser!.uid);
+          userDetailsBox = GetStorage(_auth.currentUser!.uid);
+          final details = userDetailsBox.read('userDetails');
+          if (details == null) {
+            Get.offAllNamed(AppRoutes.userDetails);
+          } else {
+            Get.offAllNamed(
+              AppRoutes.home,
+            );
+          }
+        });
       }
     } on PlatformException {
       Get.snackbar(

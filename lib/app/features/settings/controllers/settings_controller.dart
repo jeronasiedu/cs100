@@ -5,9 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsController extends GetxController {
   GetStorage themeStore = GetStorage('theme');
+  GetStorage userStore = GetStorage('userStore');
   late final themeValue = themeStore.read('themeMode');
   RxBool isLoggingOut = false.obs;
   late bool isDarkMode;
@@ -19,6 +21,7 @@ class SettingsController extends GetxController {
     try {
       await GoogleSignIn().disconnect();
       await auth.signOut();
+      await userStore.erase();
       Get.offAllNamed(AppRoutes.auth);
     } on PlatformException {
       Get.snackbar(
@@ -64,6 +67,15 @@ class SettingsController extends GetxController {
     }
   }
 
-  // support me
-
+  // chat us
+  void chatUs() async {
+    const number = "233544751048";
+    const url =
+        "https://wa.me/$number/?text=Hi developer, thanks for your work";
+    final encodedUrl = Uri.encodeFull(url);
+    final encodedUri = Uri.parse(encodedUrl);
+    if (!await launchUrl(encodedUri, mode: LaunchMode.externalApplication)) {
+      Get.snackbar("Error", "Whatsapp is not installed");
+    }
+  }
 }

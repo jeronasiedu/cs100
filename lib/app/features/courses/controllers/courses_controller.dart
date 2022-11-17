@@ -1,3 +1,4 @@
+import 'package:cs_100/app/features/ads/ad_helper.dart';
 import 'package:cs_100/app/features/courses/models/course_model.dart';
 import 'package:cs_100/shared/app_status.dart';
 import 'package:cs_100/shared/database.dart';
@@ -5,12 +6,14 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class CoursesController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late GetStorage userDetailsBox;
   late String year;
   late int semester;
+  Rx<BannerAd>? bannerAd;
   final courses = Rx<Either<AppStatus, List<CourseModel>>>(
     const Right(<CourseModel>[]),
   );
@@ -24,6 +27,21 @@ class CoursesController extends GetxController {
       fetchCourses();
     });
     fetchCourses();
+    BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (ad) {
+          bannerAd!.value = ad as BannerAd;
+          print('add has been loaded');
+        },
+        onAdFailedToLoad: (ad, error) {
+          print("Ad error ${error.message}");
+          ad.dispose();
+        },
+      ),
+    ).load();
     super.onInit();
   }
 

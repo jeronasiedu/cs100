@@ -73,6 +73,14 @@ class SettingsPage extends StatelessWidget {
               trailing: const Icon(Ionicons.heart_outline),
             ),
             const Divider(height: 0),
+            ListTile(
+              onTap: () {
+                controller.chatUs();
+              },
+              title: const Text("Chat Us"),
+              trailing: const Icon(Ionicons.logo_whatsapp),
+            ),
+            const Divider(height: 0),
             Obx(
               () => ListTile(
                 onTap: () {

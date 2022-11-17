@@ -13,7 +13,8 @@ class CoursesPage extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.only(bottom: 8, left: 14, right: 14),
+              padding: const EdgeInsets.only(
+                  bottom: 8, left: 14, right: 14, top: 12),
               child: DefaultTextStyle(
                 style: Get.textTheme.headline6!,
                 child: Row(
@@ -94,7 +95,7 @@ class CoursesPage extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

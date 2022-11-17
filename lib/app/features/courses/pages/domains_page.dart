@@ -14,6 +14,8 @@ class DomainsPage extends StatelessWidget {
           title: Text(controller.name),
           bottom: TabBar(
             isScrollable: true,
+            
+
             tabs: [
               Tab(
                 child: Chip(
