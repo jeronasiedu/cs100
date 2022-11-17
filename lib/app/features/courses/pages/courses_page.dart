@@ -1,5 +1,6 @@
 import 'package:cs_100/app/features/courses/controllers/courses_controller.dart';
 import 'package:cs_100/app/features/courses/pages/domains_page.dart';
+import 'package:cs_100/shared/spinner.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,19 +18,23 @@ class CoursesPage extends StatelessWidget {
                   bottom: 8, left: 14, right: 14, top: 12),
               child: DefaultTextStyle(
                 style: Get.textTheme.headline6!,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "KNUST",
-                    ),
-                    Text(
-                      "Level ${controller.year}",
-                      style: const TextStyle(
-                        fontSize: 18,
-                      ),
-                    )
-                  ],
+                child: Obx(
+                  () => controller.isUserDetailsReady.value
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              "KNUST",
+                            ),
+                            Text(
+                              "Level ${controller.year}",
+                              style: const TextStyle(
+                                fontSize: 18,
+                              ),
+                            )
+                          ],
+                        )
+                      : const Spinner(),
                 ),
               )),
           Expanded(

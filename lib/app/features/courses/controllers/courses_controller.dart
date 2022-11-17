@@ -1,4 +1,3 @@
-import 'package:cs_100/app/features/ads/ad_helper.dart';
 import 'package:cs_100/app/features/courses/models/course_model.dart';
 import 'package:cs_100/shared/app_status.dart';
 import 'package:cs_100/shared/database.dart';
@@ -14,34 +13,24 @@ class CoursesController extends GetxController {
   late String year;
   late int semester;
   Rx<BannerAd>? bannerAd;
+  RxBool isUserDetailsReady = false.obs;
   final courses = Rx<Either<AppStatus, List<CourseModel>>>(
     const Right(<CourseModel>[]),
   );
   @override
-  void onInit() {
+  void onInit() async {
+    await GetStorage.init(_auth.currentUser!.uid);
     userDetailsBox = GetStorage(_auth.currentUser!.uid);
+    print("userId => ${_auth.currentUser!.uid}");
     final Map userDetails = userDetailsBox.read('userDetails');
+    print(userDetails);
     year = getStudentYear(userDetails['year']);
     semester = getStudentSemester(userDetails['semester']);
+    isUserDetailsReady.value = true;
     userDetailsBox.listen(() {
       fetchCourses();
     });
     fetchCourses();
-    BannerAd(
-      adUnitId: AdHelper.bannerAdUnitId,
-      request: const AdRequest(),
-      size: AdSize.banner,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          bannerAd!.value = ad as BannerAd;
-          print('add has been loaded');
-        },
-        onAdFailedToLoad: (ad, error) {
-          print("Ad error ${error.message}");
-          ad.dispose();
-        },
-      ),
-    ).load();
     super.onInit();
   }
 

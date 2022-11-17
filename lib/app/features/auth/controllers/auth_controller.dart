@@ -24,18 +24,18 @@ class AuthController extends GetxController {
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
         );
-        await _auth.signInWithCredential(credential).then((value) {
-          userStore.write('id', _auth.currentUser!.uid);
-          userDetailsBox = GetStorage(_auth.currentUser!.uid);
-          final details = userDetailsBox.read('userDetails');
-          if (details == null) {
-            Get.offAllNamed(AppRoutes.userDetails);
-          } else {
-            Get.offAllNamed(
-              AppRoutes.home,
-            );
-          }
-        });
+        await _auth.signInWithCredential(credential);
+        userStore.write('id', _auth.currentUser!.uid);
+        userDetailsBox = GetStorage(_auth.currentUser!.uid);
+        print("userId => ${_auth.currentUser!.uid}");
+        final details = userDetailsBox.read('userDetails');
+        if (details == null) {
+          Get.offAllNamed(AppRoutes.userDetails);
+        } else {
+          Get.offAllNamed(
+            AppRoutes.home,
+          );
+        }
       }
     } on PlatformException {
       Get.snackbar(
