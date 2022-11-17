@@ -6,11 +6,13 @@ class ResourceModel {
   final String name;
   final String description;
   final String domainThumbnail;
+  final String url;
   ResourceModel({
     required this.domainName,
     required this.name,
     required this.description,
     required this.domainThumbnail,
+    required this.url,
   });
 
   Map<String, dynamic> toMap() {
@@ -19,6 +21,7 @@ class ResourceModel {
       'name': name,
       'description': description,
       'domainThumbnail': domainThumbnail,
+      'url': url,
     };
   }
 
@@ -28,6 +31,7 @@ class ResourceModel {
       name: map['name'] as String,
       description: map['description'] as String,
       domainThumbnail: map['domainThumbnail'] as String,
+      url: map['url'] as String,
     );
   }
 

@@ -6,6 +6,7 @@ class CourseModel {
   final String name;
   final String level;
   final String code;
+  final int totalResources;
   final int semester;
   CourseModel({
     required this.id,
@@ -13,6 +14,7 @@ class CourseModel {
     required this.level,
     required this.code,
     required this.semester,
+    this.totalResources = 0,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,6 +23,7 @@ class CourseModel {
       'name': name,
       'level': level,
       'code': code,
+      'totalResources': totalResources,
       'semester': semester,
     };
   }
@@ -31,6 +34,7 @@ class CourseModel {
       name: map['name'] as String,
       level: map['level'] as String,
       code: map['code'] as String,
+      totalResources: map['totalResources'] as int,
       semester: map['semester'] as int,
     );
   }

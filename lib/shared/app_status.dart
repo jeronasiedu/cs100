@@ -12,8 +12,15 @@ class AppStatus {
       this.errorMessage =
           "Something happened, check your connection and try again"});
 
-  Widget get state =>
-      status == Status.loading ? const Spinner() : Text(errorMessage);
+  Widget get state => status == Status.loading
+      ? const Spinner()
+      : Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            errorMessage,
+            textAlign: TextAlign.center,
+          ),
+        );
 }
 
 enum Status { loading, failure }

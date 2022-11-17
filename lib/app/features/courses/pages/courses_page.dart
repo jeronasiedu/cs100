@@ -55,6 +55,7 @@ class CoursesPage extends StatelessWidget {
                     final String code = r[index].code;
                     final String name = r[index].name;
                     final String id = r[index].id;
+                    final int totalResources = r[index].totalResources;
                     return Card(
                       elevation: Get.isDarkMode ? 1 : 0.5,
                       child: InkWell(
@@ -76,7 +77,7 @@ class CoursesPage extends StatelessWidget {
                             children: [
                               Text(
                                 code,
-                                style: Get.textTheme.bodyLarge,
+                                style: Get.textTheme.headline6,
                               ),
                               const Spacer(),
                               Text(
@@ -88,8 +89,8 @@ class CoursesPage extends StatelessWidget {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              const Chip(
-                                label: Text("36 lessons"),
+                              Chip(
+                                label: Text('$totalResources Resources'),
                               )
                             ],
                           ),

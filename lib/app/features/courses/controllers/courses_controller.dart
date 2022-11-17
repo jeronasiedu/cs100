@@ -21,9 +21,7 @@ class CoursesController extends GetxController {
   void onInit() async {
     await GetStorage.init(_auth.currentUser!.uid);
     userDetailsBox = GetStorage(_auth.currentUser!.uid);
-    print("userId => ${_auth.currentUser!.uid}");
     final Map userDetails = userDetailsBox.read('userDetails');
-    print(userDetails);
     year = getStudentYear(userDetails['year']);
     semester = getStudentSemester(userDetails['semester']);
     isUserDetailsReady.value = true;
@@ -51,10 +49,12 @@ class CoursesController extends GetxController {
       final coursesList = coursesSnapshot.docs.map((course) {
         final courseData = course.data();
         courseData['id'] = course.id;
+        courseData['totalResources'] = courseData['resources']?.length ?? 0;
         return CourseModel.fromMap(courseData);
       }).toList();
       courses.value = Right(coursesList);
     } catch (e) {
+      print(e.toString());
       courses.value = Left(AppStatus(status: Status.failure));
     }
   }

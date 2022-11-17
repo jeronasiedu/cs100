@@ -1,4 +1,5 @@
 import 'package:cs_100/app/features/courses/controllers/domains_controller.dart';
+import 'package:cs_100/app/features/courses/pages/resource_page.dart';
 import 'package:cs_100/shared/utils/custom_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,16 +44,26 @@ class DomainsPage extends StatelessWidget {
                     )),
               ),
               body: TabBarView(
+                physics: const BouncingScrollPhysics(),
                 children: List.generate(
                   domains.length,
                   (index) {
                     final resources = domains[index].resources;
                     return ListView.separated(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
                         final String name = resources[index].name;
+                        final String description = resources[index].description;
+                        final String url = resources[index].url;
                         return ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => ResourcePage(), arguments: {
+                              "description": description,
+                              "name": name,
+                              "url": url,
+                            });
+                          },
                           title: Text(name),
                         );
                       },

@@ -39,9 +39,9 @@ class DomainsController extends GetxController {
         final resourceSnapshot =
             await Database.resourcesCollection.doc(id).get();
         final data = resourceSnapshot.data()!;
-        final DocumentReference DomainRef = data['domain'];
+        final DocumentReference domainRef = data['domain'];
         final domainSnapshot =
-            await Database.domainsCollection.doc(DomainRef.id).get();
+            await Database.domainsCollection.doc(domainRef.id).get();
         final domainData = domainSnapshot.data();
         data['domainName'] = domainData!['name'];
         data['domainThumbnail'] = domainData['thumbnail'];
