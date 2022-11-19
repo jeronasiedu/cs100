@@ -1,7 +1,9 @@
 import 'package:cs_100/shared/enums.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ionicons/ionicons.dart';
 
 class ProfileController extends GetxController {
   late GetStorage userDetailsBox;
@@ -33,11 +35,13 @@ class ProfileController extends GetxController {
     );
     hasChangedDetails = false;
     Get.snackbar(
-      "Update",
-      "Your account info has been updated, navigate to course to see the new changes",
-      backgroundColor: Get.theme.secondaryHeaderColor,
+      "Updated",
+      "Your account info has been updated, navigate to courses page to see the new changes",
+      backgroundColor: Get.theme.colorScheme.primaryContainer,
+      icon: const Icon(Ionicons.information),
       snackPosition: SnackPosition.BOTTOM,
-      colorText: Get.theme.colorScheme.onTertiary,
+      colorText: Get.theme.colorScheme.onPrimaryContainer,
+      margin: const EdgeInsets.all(12),
     );
     update();
   }

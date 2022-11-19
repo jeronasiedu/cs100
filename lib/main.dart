@@ -5,6 +5,7 @@ import 'package:cs_100/app/routes/pages.dart';
 import 'package:cs_100/app/theme/theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -22,7 +23,7 @@ void main() async {
   await GetStorage.init("userStore");
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: !kReleaseMode,
       builder: (context) => const MyApp(),
     ),
   );

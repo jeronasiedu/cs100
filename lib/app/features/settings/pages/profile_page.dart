@@ -16,6 +16,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView(
+          physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(14),
           children: [
             const Text("Email"),
@@ -130,19 +131,21 @@ class ProfilePage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 25),
             GetBuilder<ProfileController>(
               init: ProfileController(),
               initState: (_) {},
               builder: (_) {
-                return ElevatedButton.icon(
-                  onPressed: controller.hasChangedDetails
-                      ? () {
-                          controller.updateDetails();
-                        }
-                      : null,
-                  icon: const Icon(Ionicons.checkmark),
-                  label: const Text("Update"),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 25),
+                  child: ElevatedButton.icon(
+                    onPressed: controller.hasChangedDetails
+                        ? () {
+                            controller.updateDetails();
+                          }
+                        : null,
+                    icon: const Icon(Ionicons.checkmark),
+                    label: const Text("Update"),
+                  ),
                 );
               },
             )

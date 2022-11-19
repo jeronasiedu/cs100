@@ -50,7 +50,7 @@ class SettingsPage extends StatelessWidget {
                     trailing: CupertinoSwitch(
                       trackColor:
                           Get.theme.colorScheme.tertiary.withOpacity(0.7),
-                      activeColor: Get.theme.colorScheme.primary,
+                      activeColor: Get.theme.colorScheme.secondaryContainer,
                       value: controller.isDarkMode,
                       onChanged: (bool value) {
                         controller.toggleDarkMode(value: value);

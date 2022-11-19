@@ -69,7 +69,7 @@ class CoursesPage extends StatelessWidget {
                       children: [
                         Chip(
                           label: Text(
-                            code,
+                            code.toUpperCase(),
                             // style: Get.textTheme.headlineSmall,
                           ),
                           backgroundColor:
