@@ -18,8 +18,9 @@ class AuthPage extends GetView<AuthController> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  'assets/programming.png',
+                  'assets/illustration.png',
                 ),
+                const SizedBox(height: 20),
                 Text(
                   "Welcome to CS100",
                   textAlign: TextAlign.center,

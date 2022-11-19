@@ -159,14 +159,14 @@ class UserDetailsPage extends GetView<UserDetailsController> {
               icon: const Icon(Ionicons.checkmark),
               label: const Text("All Set!"),
             ),
-            const SizedBox(
-              height: 5,
-            ),
-            const Text(
-              "You can change these later in settings",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
+            const Padding(
+              padding: EdgeInsets.only(top: 5, bottom: 12),
+              child: Text(
+                "You can change these later in settings",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ],
