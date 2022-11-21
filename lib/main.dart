@@ -1,4 +1,3 @@
-import 'package:cs_100/app/features/ads/ad_helper.dart';
 import 'package:cs_100/app/features/auth/bindings/auth_binding.dart';
 import 'package:cs_100/app/features/home/bindings/home_binding.dart';
 import 'package:cs_100/app/routes/pages.dart';
@@ -15,8 +14,6 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AdHelper().initGoogleMobileAds();
-  // FlutterNativeSplash.preserve(widgetsBinding: binding);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await GetStorage.init();
   await GetStorage.init('theme');
@@ -27,7 +24,6 @@ void main() async {
       builder: (context) => const MyApp(),
     ),
   );
-  // FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {

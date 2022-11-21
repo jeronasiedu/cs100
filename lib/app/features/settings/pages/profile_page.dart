@@ -131,26 +131,22 @@ class ProfilePage extends StatelessWidget {
                 );
               },
             ),
-            GetBuilder<ProfileController>(
-              init: ProfileController(),
-              initState: (_) {},
-              builder: (_) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 25),
-                  child: ElevatedButton.icon(
-                    onPressed: controller.hasChangedDetails
-                        ? () {
-                            controller.updateDetails();
-                          }
-                        : null,
-                    icon: const Icon(Ionicons.checkmark),
-                    label: const Text("Update"),
-                  ),
-                );
-              },
-            )
           ],
         ),
+      ),
+      floatingActionButton: GetBuilder<ProfileController>(
+        init: ProfileController(),
+        initState: (_) {},
+        builder: (_) {
+          return FloatingActionButton(
+            onPressed: controller.hasChangedDetails
+                ? () {
+                    controller.updateDetails();
+                  }
+                : null,
+            child: const Icon(Ionicons.checkmark),
+          );
+        },
       ),
     );
   }

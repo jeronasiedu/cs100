@@ -20,9 +20,9 @@ class HomePage extends GetView<HomeController> {
           height: 70,
           destinations: const [
             NavigationDestination(
-              icon: Icon(Ionicons.school_outline),
+              icon: Icon(Ionicons.grid_outline),
               label: 'Courses',
-              selectedIcon: Icon(Ionicons.school),
+              selectedIcon: Icon(Ionicons.grid),
             ),
             NavigationDestination(
               icon: Icon(Ionicons.settings_outline),

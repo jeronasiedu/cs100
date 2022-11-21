@@ -8,13 +8,15 @@ class CourseModel {
   final String code;
   final int totalResources;
   final int semester;
+  final String thumbnail;
   CourseModel({
     required this.id,
     required this.name,
     required this.level,
     required this.code,
-    required this.semester,
     this.totalResources = 0,
+    required this.semester,
+    required this.thumbnail,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,6 +27,7 @@ class CourseModel {
       'code': code,
       'totalResources': totalResources,
       'semester': semester,
+      'thumbnail': thumbnail,
     };
   }
 
@@ -36,6 +39,7 @@ class CourseModel {
       code: map['code'] as String,
       totalResources: map['totalResources'] as int,
       semester: map['semester'] as int,
+      thumbnail: map['thumbnail'] as String,
     );
   }
 

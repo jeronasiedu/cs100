@@ -1,6 +1,8 @@
 import 'package:cs_100/app/features/courses/controllers/courses_controller.dart';
 import 'package:cs_100/app/features/courses/pages/domains_page.dart';
+import 'package:cs_100/app/features/settings/pages/profile_page.dart';
 import 'package:cs_100/shared/spinner.dart';
+import 'package:cs_100/shared/utils/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,16 +14,33 @@ class CoursesPage extends StatelessWidget {
     final int crossAxisCount = context.width ~/ 180;
     return Scaffold(
       appBar: AppBar(
+        titleTextStyle: Get.textTheme.bodyLarge,
         title: Obx(
           () => controller.isUserDetailsReady.value
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "KNUST",
+                    InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(1000),
+                      child: const Padding(
+                        padding: EdgeInsets.all(5),
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('assets/logo.png'),
+                        ),
+                      ),
                     ),
-                    Text(
-                      "Level ${controller.year}",
+                    GetBuilder<CoursesController>(
+                      init: CoursesController(),
+                      initState: (_) {},
+                      builder: (_) {
+                        return TextButton.icon(
+                            onPressed: () {
+                              Get.to(() => ProfilePage());
+                            },
+                            icon: const Icon(Icons.school_outlined),
+                            label: Text("lv${controller.year}@KNUST"));
+                      },
                     )
                   ],
                 )
@@ -41,12 +60,13 @@ class CoursesPage extends StatelessWidget {
               crossAxisCount: crossAxisCount,
               mainAxisSpacing: 10,
               crossAxisSpacing: 8,
+              childAspectRatio: 0.9,
             ),
             itemBuilder: (context, index) {
               final String code = courses[index].code;
               final String name = courses[index].name;
               final String id = courses[index].id;
-              final int totalResources = courses[index].totalResources;
+              final String thumbnail = courses[index].thumbnail;
               return Card(
                 elevation: Get.isDarkMode ? 1 : 0.5,
                 child: InkWell(
@@ -67,7 +87,43 @@ class CoursesPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Chip(
+                        Center(
+                          child: FractionallySizedBox(
+                            widthFactor: 0.7,
+                            child: CustomImage(
+                              imageUrl: thumbnail,
+                              width: double.maxFinite,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const Spacer(),
+                        Text(
+                          code.toUpperCase(),
+                          style: const TextStyle(),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/* 
+Chip(
                           label: Text(
                             code.toUpperCase(),
                             // style: Get.textTheme.headlineSmall,
@@ -94,59 +150,4 @@ class CoursesPage extends StatelessWidget {
                               // color: Get.theme.colorScheme.onPrimary,
                               ),
                         )
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/* 
-                        child: Padding(
-                          padding: const EdgeInsets.all(6),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                code,
-                                style: Get.textTheme.headline6,
-                              ),
-                              const Spacer(),
-                              Text(
-                                name,
-                                style: Get.textTheme.bodyText1!.copyWith(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Chip(
-                                label: Text('$totalResources Resources'),
-                                backgroundColor: Get.theme.colorScheme.primary
-                                    .withOpacity(0.8),
-                                labelStyle: Get.textTheme.bodyText2!.copyWith(
-                                  color: Get.theme.colorScheme.onPrimary,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    )
-
  */

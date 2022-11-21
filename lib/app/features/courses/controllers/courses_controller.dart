@@ -5,14 +5,12 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class CoursesController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late GetStorage userDetailsBox;
   late String year;
   late int semester;
-  Rx<BannerAd>? bannerAd;
   RxBool isUserDetailsReady = false.obs;
   final courses = Rx<Either<AppStatus, List<CourseModel>>>(
     const Right(<CourseModel>[]),
@@ -54,24 +52,23 @@ class CoursesController extends GetxController {
       }).toList();
       courses.value = Right(coursesList);
     } catch (e) {
-      print(e.toString());
       courses.value = Left(AppStatus(status: Status.failure));
     }
   }
-}
 
-String getStudentYear(int year) {
-  if (year == 0) {
-    return "100";
-  } else if (year == 1) {
-    return "200";
+  String getStudentYear(int year) {
+    if (year == 0) {
+      return "100";
+    } else if (year == 1) {
+      return "200";
+    }
+    return "300";
   }
-  return "300";
-}
 
-int getStudentSemester(int semester) {
-  if (semester == 0) {
-    return 1;
+  int getStudentSemester(int semester) {
+    if (semester == 0) {
+      return 1;
+    }
+    return 2;
   }
-  return 2;
 }
