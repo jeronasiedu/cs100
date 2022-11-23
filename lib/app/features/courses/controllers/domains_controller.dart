@@ -12,6 +12,7 @@ class DomainsController extends GetxController {
   final String code = Get.arguments['code'];
   final String name = Get.arguments['name'];
   final String courseId = Get.arguments['id'];
+  final String thumbnail = Get.arguments['thumbnail'];
   final domains = Rx<Either<AppStatus, List<DomainModel>>>(
     const Right(<DomainModel>[]),
   );

@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCXgPbQNQb99AFj6NFQ3kpdtCW-i2uwWcg',
-    appId: '1:929019006788:android:7cb2127dd3ec2ae46d5111',
+    appId: '1:929019006788:android:d50546cb44ae5a786d5111',
     messagingSenderId: '929019006788',
     projectId: 'cs-100',
     storageBucket: 'cs-100.appspot.com',
@@ -59,11 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC05IDb-DoWCyrfAchPY_xhksVmG0TONUY',
-    appId: '1:929019006788:ios:e2d862f1c69b172a6d5111',
+    appId: '1:929019006788:ios:2e9ebd4f3f93e9926d5111',
     messagingSenderId: '929019006788',
     projectId: 'cs-100',
     storageBucket: 'cs-100.appspot.com',
-    iosClientId: '929019006788-nnek7lnpqvd7c166a7b6qdocgfbb1u1v.apps.googleusercontent.com',
-    iosBundleId: 'com.example.cs100',
+    androidClientId: '929019006788-4l3e6s00ip5oth5pe62ft8934bu7htcr.apps.googleusercontent.com',
+    iosClientId: '929019006788-prnqjh2sllp71ej1c5jhjhcm6tcnp8pv.apps.googleusercontent.com',
+    iosBundleId: 'com.jerondev.cs100',
   );
 }

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cs_100">
    <application
-        android:label="CS 100"
+        android:label="CS100"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

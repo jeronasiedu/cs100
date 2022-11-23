@@ -14,8 +14,17 @@ class DomainsPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(controller.name),
               titleTextStyle: Get.textTheme.headline6!.copyWith(
-                fontSize: 20,
+                fontSize: 18,
               ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: CustomAvatar(
+                    imageUrl: controller.thumbnail,
+                    radius: 17,
+                  ),
+                ),
+              ],
             ),
             body: Center(
               child: l.state,
@@ -26,22 +35,35 @@ class DomainsPage extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(
                 title: Text(controller.name),
+                titleTextStyle: Get.textTheme.headline6!.copyWith(
+                  fontSize: 18,
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: CustomAvatar(
+                      imageUrl: controller.thumbnail,
+                      radius: 17,
+                    ),
+                  ),
+                ],
                 bottom: TabBar(
-                    physics: const BouncingScrollPhysics(),
-                    isScrollable: true,
-                    tabs: List.generate(
-                      domains.length,
-                      (index) {
-                        final String domainName = domains[index].name;
-                        final String domainThumbnail = domains[index].thumbnail;
-                        return Tab(
-                          child: Chip(
-                            label: Text(domainName),
-                            avatar: CustomAvatar(imageUrl: domainThumbnail),
-                          ),
-                        );
-                      },
-                    )),
+                  physics: const BouncingScrollPhysics(),
+                  isScrollable: true,
+                  tabs: List.generate(
+                    domains.length,
+                    (index) {
+                      final String domainName = domains[index].name;
+                      final String domainThumbnail = domains[index].thumbnail;
+                      return Tab(
+                        child: Chip(
+                          label: Text(domainName),
+                          avatar: CustomAvatar(imageUrl: domainThumbnail),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
               body: TabBarView(
                 physics: const BouncingScrollPhysics(),

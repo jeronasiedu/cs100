@@ -10,23 +10,27 @@ final lightTheme = FlexThemeData.light(
     Get.textTheme,
   ),
 ).copyWith(
-  elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 20,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 20,
+        ),
       ),
     ),
-  ),
-  outlinedButtonTheme: OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      padding: const EdgeInsets.symmetric(
-        vertical: 10,
-        horizontal: 20,
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 20,
+        ),
       ),
     ),
-  ),
-);
+    appBarTheme: AppBarTheme(
+      titleTextStyle: Get.textTheme.headline6!.copyWith(
+        fontSize: 18,
+      ),
+    ));
 
 final darkTheme = FlexThemeData.dark(
   scheme: FlexScheme.sanJuanBlue,
@@ -49,6 +53,11 @@ final darkTheme = FlexThemeData.dark(
         vertical: 10,
         horizontal: 20,
       ),
+    ),
+  ),
+  appBarTheme: AppBarTheme(
+    titleTextStyle: Get.textTheme.headline6!.copyWith(
+      fontSize: 18,
     ),
   ),
 );

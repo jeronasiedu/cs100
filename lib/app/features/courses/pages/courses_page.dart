@@ -68,7 +68,7 @@ class CoursesPage extends StatelessWidget {
               final String id = courses[index].id;
               final String thumbnail = courses[index].thumbnail;
               return Card(
-                elevation: Get.isDarkMode ? 1 : 0.5,
+                elevation: Get.isDarkMode ? 2 : 0.5,
                 child: InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
@@ -78,6 +78,7 @@ class CoursesPage extends StatelessWidget {
                         'code': code,
                         'name': name,
                         'id': id,
+                        'thumbnail': thumbnail,
                       },
                     );
                   },
@@ -90,10 +91,13 @@ class CoursesPage extends StatelessWidget {
                         Center(
                           child: FractionallySizedBox(
                             widthFactor: 0.7,
-                            child: CustomImage(
-                              imageUrl: thumbnail,
-                              width: double.maxFinite,
-                              fit: BoxFit.cover,
+                            child: Hero(
+                              tag: id,
+                              child: CustomImage(
+                                imageUrl: thumbnail,
+                                width: double.maxFinite,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
