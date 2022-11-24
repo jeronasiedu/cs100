@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cs_100">
+    package="com.jerondev.CS100">
    <application
         android:label="CS100"
         android:name="${applicationName}"

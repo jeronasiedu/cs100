@@ -1,4 +1,4 @@
-package com.example.cs_100
+package com.jerondev.CS100
 
 import io.flutter.embedding.android.FlutterActivity
 
