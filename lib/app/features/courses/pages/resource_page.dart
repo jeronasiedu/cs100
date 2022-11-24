@@ -35,7 +35,7 @@ class ResourcePage extends StatelessWidget {
             onPressed: () {
               controller.openResource();
             },
-            child: Text("Visit ${controller.name}"),
+            child: Text(controller.buttonText),
           )
         ],
       ),

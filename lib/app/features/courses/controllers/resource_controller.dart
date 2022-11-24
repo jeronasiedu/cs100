@@ -7,8 +7,19 @@ class ResourceController extends GetxController {
   final String name = Get.arguments['name'];
   final String description = Get.arguments['description'];
   final String url = Get.arguments['url'];
+  final String domainName = Get.arguments['domainName'];
   final DomainsController _domainsController = Get.find();
   String get courseName => _domainsController.name;
+  // getter function to return the url text
+  String get buttonText {
+    if (domainName.toLowerCase() == 'youtube') {
+      return 'Watch on Youtube';
+    } else if (domainName.toLowerCase() == "website") {
+      return "Visit Website";
+    } else {
+      return 'Download past question';
+    }
+  }
 
   void openResource() async {
     final uri = Uri.parse(url);

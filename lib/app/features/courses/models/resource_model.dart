@@ -39,4 +39,8 @@ class ResourceModel {
 
   factory ResourceModel.fromJson(String source) =>
       ResourceModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  // a getter to generate appropriate url text
+  // if it's file, then say download file name else visit link
+
 }

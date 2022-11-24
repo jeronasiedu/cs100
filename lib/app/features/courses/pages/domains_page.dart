@@ -72,6 +72,7 @@ class DomainsPage extends StatelessWidget {
                   domains.length,
                   (index) {
                     final resources = domains[index].resources;
+                    final domainName = domains[index].name;
                     return ListView.separated(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       physics: const BouncingScrollPhysics(),
@@ -85,10 +86,11 @@ class DomainsPage extends StatelessWidget {
                               "description": description,
                               "name": name,
                               "url": url,
+                              "domainName": domainName,
                             });
                           },
                           title: Text(name),
-                          trailing: const Icon(Ionicons.arrow_forward),
+                          trailing: const Icon(Ionicons.arrow_redo_outline),
                         );
                       },
                       separatorBuilder: (context, index) =>

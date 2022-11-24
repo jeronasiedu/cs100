@@ -151,26 +151,15 @@ class UserDetailsPage extends GetView<UserDetailsController> {
                 );
               },
             ),
-            const SizedBox(height: 25),
-            ElevatedButton.icon(
-              onPressed: () {
-                controller.saveDetails();
-              },
-              icon: const Icon(Ionicons.checkmark),
-              label: const Text("All Set!"),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 5, bottom: 12),
-              child: Text(
-                "You can change these later in settings",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              ),
-            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          controller.saveDetails();
+        },
+        label: const Text("All Set!"),
+        icon: const Icon(Ionicons.checkmark),
       ),
     );
   }
