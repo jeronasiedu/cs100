@@ -7,53 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:929019006788:android:7cb2127dd3ec2ae46d5111",
+        "mobilesdk_app_id": "1:929019006788:android:b958ac03e28121756d5111",
         "android_client_info": {
           "package_name": "com.jerondev.CS100"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "929019006788-4l3e6s00ip5oth5pe62ft8934bu7htcr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.jerondev.CS100",
-            "certificate_hash": "7e895a6005e2afb62f1768b0aa0f84ce848cb10e"
-          }
-        },
-        {
-          "client_id": "929019006788-vnb2ses6jto9rbf3eouk714sprhq5n5j.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCXgPbQNQb99AFj6NFQ3kpdtCW-i2uwWcg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "929019006788-vnb2ses6jto9rbf3eouk714sprhq5n5j.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "929019006788-nnek7lnpqvd7c166a7b6qdocgfbb1u1v.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.cs100"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:929019006788:android:d50546cb44ae5a786d5111",
-        "android_client_info": {
-          "package_name": "com.jerondev.cs100"
         }
       },
       "oauth_client": [

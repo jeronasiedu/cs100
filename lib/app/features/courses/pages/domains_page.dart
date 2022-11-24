@@ -3,6 +3,7 @@ import 'package:cs_100/app/features/courses/pages/resource_page.dart';
 import 'package:cs_100/shared/utils/custom_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 
 class DomainsPage extends StatelessWidget {
   DomainsPage({Key? key}) : super(key: key);
@@ -87,6 +88,7 @@ class DomainsPage extends StatelessWidget {
                             });
                           },
                           title: Text(name),
+                          trailing: const Icon(Ionicons.arrow_forward),
                         );
                       },
                       separatorBuilder: (context, index) =>
