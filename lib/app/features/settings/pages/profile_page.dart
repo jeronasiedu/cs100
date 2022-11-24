@@ -138,13 +138,14 @@ class ProfilePage extends StatelessWidget {
         init: ProfileController(),
         initState: (_) {},
         builder: (_) {
-          return FloatingActionButton(
+          return FloatingActionButton.extended(
             onPressed: controller.hasChangedDetails
                 ? () {
                     controller.updateDetails();
                   }
                 : null,
-            child: const Icon(Ionicons.checkmark),
+            icon: const Icon(Ionicons.checkmark),
+            label: const Text("Update"),
           );
         },
       ),
