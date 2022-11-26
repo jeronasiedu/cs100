@@ -84,7 +84,9 @@ class SettingsPage extends StatelessWidget {
             ),
             const Divider(height: 0),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                controller.openPrivacyPolicy();
+              },
               title: const Text("Privacy Policy"),
               trailing: const Icon(Icons.privacy_tip_outlined),
             ),
