@@ -83,6 +83,12 @@ class SettingsPage extends StatelessWidget {
               trailing: const Icon(Ionicons.logo_whatsapp),
             ),
             const Divider(height: 0),
+            ListTile(
+              onTap: () {},
+              title: const Text("Privacy Policy"),
+              trailing: const Icon(Icons.privacy_tip_outlined),
+            ),
+            const Divider(height: 0),
             Obx(
               () => ListTile(
                 onTap: () {

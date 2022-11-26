@@ -80,6 +80,16 @@ class SettingsController extends GetxController {
     }
   }
 
+  void openPrivacyPolicy() async {
+    const url =
+        "https://www.termsfeed.com/live/ec5bacc0-0a85-4dec-be18-8dd8e26861e2";
+    final encodedUrl = Uri.encodeFull(url);
+    final encodedUri = Uri.parse(encodedUrl);
+    if (!await launchUrl(encodedUri, mode: LaunchMode.externalApplication)) {
+      Get.snackbar("Error", "Something went wrong");
+    }
+  }
+
   void shareApp() {
     Share.share(
       "Hey, checkout CS100! A must have app for all computer science students ",
